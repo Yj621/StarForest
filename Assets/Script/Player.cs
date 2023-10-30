@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -50,14 +51,14 @@ public class Player : MonoBehaviour
      * 아이템 인벤토리
      */
 
-    //[SerializeField]
-    //private float range;  
-    //private bool pickupActivated = false;  
+    [SerializeField]
+    private float range;
+    private bool pickupActivated = false;
 
-    //private RaycastHit hitInfo; 
+    private RaycastHit hitInfo;
 
-    //[SerializeField]
-    //private LayerMask layerMask; 
+    [SerializeField]
+    private LayerMask layerMask;
 
 
     void Awake()
@@ -80,8 +81,8 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        //CheckItem();
-        //TryAction();
+        CheckItem();
+        TryAction();
 
 
         Ray();
@@ -400,51 +401,68 @@ public class Player : MonoBehaviour
     }
 
 
-    ///*
-    //* 아이템 인벤토리
-    //*/
-    //private void TryAction()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Z))
-    //    {
-    //        CheckItem();
-    //        CanPickUp();
-    //    }
-    //}
+    /*
+    * 아이템 인벤토리
+    */
+    private void TryAction()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            CheckItem();
+            CanPickUp();
+            print("pick z");
+        }
+    }
 
-    //private void CheckItem()
-    //{
-    //    if (Physics.Raycast(transform.position, transform.forward, out hitInfo, range, layerMask))
-    //    {
-    //        if (hitInfo.transform.tag == "Item")
-    //        {
-    //            ItemInfoAppear();
-    //        }
-    //    }
-    //    else
-    //        ItemInfoDisappear();
-    //}
+    private void CheckItem()
+    {
+        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, range, layerMask))
+        {
+            if (hitInfo.transform.tag == "Item")
+            {
+                ItemInfoAppear();
+            }
+        }
+        else
+            ItemInfoDisappear();
+    }
 
-    //private void ItemInfoAppear()
-    //{
-    //    pickupActivated = true;
-    //}
+    private void ItemInfoAppear()
+    {
+        pickupActivated = true;
+    }
 
-    //private void ItemInfoDisappear()
-    //{
-    //    pickupActivated = false;
-    //}
+    private void ItemInfoDisappear()
+    {
+        pickupActivated = false;
+    }
+    private void CanPickUp()
+    {
+        if (pickupActivated)
+        {
+            if (hitInfo.transform != null)
+            {
+                try
+                {
+                    ItemPickUp itemPickUp = hitInfo.transform.GetComponent<ItemPickUp>();
+                    if (itemPickUp != null)
+                    {
+                        Debug.Log(itemPickUp.item.itemName + " 획득 했습니다.");  // 인벤토리 넣기
+                        Destroy(hitInfo.transform.gameObject);
+                        ItemInfoDisappear();
+                    }
+                    else
+                    {
+                        Debug.Log("ItemPickUp 컴포넌트를 찾을 수 없습니다.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("예외 발생: " + e.Message);
+                }
+            }
+        }
+    }
 
-    //private void CanPickUp()
-    //{
-    //    if (pickupActivated)
-    //    {
-    //        if (hitInfo.transform != null)
-    //        {
-    //            Debug.Log(hitInfo.transform.GetComponent<ItemPickUp>().item.itemName + " 획득 했습니다.");  // 인벤토리 넣기
-    //            Destroy(hitInfo.transform.gameObject);
-    //            ItemInfoDisappear();
-    //        }
-    //    }
-    //}
+
 }
