@@ -13,6 +13,7 @@ TagManager:
   - Chicken
   - Digged_soil
   - Item
+  - item
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Bottom
   - River
   - Item
-  - 
+  - item
   - 
   - 
   - 
