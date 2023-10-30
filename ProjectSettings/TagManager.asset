@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - RiverPoint
+  - Floor
+  - River
+  - PlantPoint
+  - Animal
+  - Cow
+  - Chicken
+  - Digged_soil
+  - Item
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Top
+  - Mid
+  - Bottom
+  - River
+  - Item
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Top
+    uniqueID: 2128130989
+    locked: 0
+  - name: Mid
+    uniqueID: 456103571
+    locked: 0
+  - name: Bott
+    uniqueID: 289132501
+    locked: 0
+  - name: ch
+    uniqueID: 3482600449
+    locked: 0
+  - name: UI
+    uniqueID: 1562626757
+    locked: 0
