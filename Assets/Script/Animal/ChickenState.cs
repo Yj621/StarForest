@@ -13,16 +13,24 @@ public class ChickenState : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         thePlayer = FindObjectOfType<Player>();
+        Debug.Log("thePlayer.chickenHappiness in start() : " + thePlayer.chickenHappiness);
         theDropItem = FindObjectOfType<DropItem>();
+
     }
 
     void Update()
     {
+        if (thePlayer != null)
+        {
+            Debug.Log("the player state : "+thePlayer.gameObject);
+        }
+        Debug.Log("thePlayer.chickenHappiness : " + thePlayer.chickenHappiness);
         // cowHappiness가 변경되었을 때만 애니메이션 상태 업데이트
         if (thePlayer.chickenHappiness != previousChickenHappiness)
         {
             UpdateAnimationState(thePlayer.chickenHappiness);
             previousChickenHappiness = thePlayer.chickenHappiness; // chickenHappiness 업데이트
+
         }
 
     }
@@ -43,27 +51,31 @@ public class ChickenState : MonoBehaviour
             case 1:
             case 2:
                 Bad();
-                // Debug.Log("Chicken : Bad");
+                Debug.Log("Chicken : Bad");
                 break;
             case 3:
             case 4:
             case 5:
                 Bad02();
-                // Debug.Log("Chicken : Bad02");
+                Debug.Log("Chicken : Bad02");
                 break;
             case 6:
             case 7:
             case 8:
                 Happy02();
-                // Debug.Log("Chicken : Happy02");
+                Debug.Log("Chicken : Happy02");
                 break;
             default:
                 Happy();
-                // Debug.Log("Chicken : Happy");
+                Debug.Log("Chicken : Happy");
                 break;
         }
 
     }
+
+    // 나머지 애니메이션 함수는 그대로 유지
+
+    // 나머지 애니메이션 함수는 그대로 유지
 
     public void Happy()
     {

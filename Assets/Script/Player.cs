@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public float speed;
 
     public int cowHappiness = 0;
-    public int chickenHappiness = 0;
+    public int chickenHappiness;
 
     public bool isCow = false;
     public bool isChick = false;
@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         spaceBar.SetActive(false);
+        chickenHappiness = 0;
     }
 
     //이동
@@ -119,14 +120,17 @@ public class Player : MonoBehaviour
             {
                 // Debug.Log("cow");
                 cowHappiness += 1;
-                // Debug.Log(cowHappiness);
+                Debug.Log("소: " + cowHappiness);
             }
             if (isChick == true)
             {
+                Debug.Log(chickenHappiness);
                 // Debug.Log("Chicken");
                 chickenHappiness += 1;
-                // Debug.Log(chickenHappiness);
+                
             }
+            Debug.Log("chickenHappiness: "+chickenHappiness);
+            
         }
         // 머리, Tool따로 노는거 방지
         if (targetObject != null)
@@ -330,16 +334,17 @@ public class Player : MonoBehaviour
     {
         string objectTag = gameObject.tag;
         //목축
-        if (other.gameObject.CompareTag("Cow") && objectTag == "Player")
+        if (other.gameObject.CompareTag("Cow") && objectTag == "Player_Hair")
         {
             isCow = true;
             // Debug.Log("cow");
             // cowHappiness += 1;
             // Debug.Log(cowHappiness);
         }
-        if (other.gameObject.CompareTag("Chicken") && objectTag == "Player")
+        if (other.gameObject.CompareTag("Chicken") && objectTag == "Player_Hair")
         {
             isChick = true;
+            Debug.Log(chickenHappiness);
         }
 
 
@@ -391,12 +396,14 @@ public class Player : MonoBehaviour
     }
     private void DecreaseChickHappiness()
     {
-        chickenHappiness -= 1;
+        
         // Debug.Log("닭의 행복 지수 : " + chickenHappiness);
         // chickenHappiness 음수가 되지 않도록 예외 처리
         if (chickenHappiness <= 0)
         {
             chickenHappiness = 0;
+        }else{
+            chickenHappiness -= 1;
         }
     }
 

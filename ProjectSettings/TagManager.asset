@@ -13,6 +13,7 @@ TagManager:
   - Chicken
   - Digged_soil
   - Item
+  - Player_Hair
   layers:
   - Default
   - TransparentFX
