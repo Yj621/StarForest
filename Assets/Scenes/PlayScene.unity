@@ -71575,13 +71575,15 @@ MonoBehaviour:
   chickenHappiness: 0
   isCow: 0
   isChick: 0
+  isFarm: 0
   isPlant: 0
   isDig: 0
   casting: 0
-  Planting: 0
+  Digging: 0
   Doing: 0
   Done: 0
-  soil_00: {fileID: 6090730815251558859, guid: e59927284c6abd74dae3b3eb87d31e12, type: 3}
+  soil_00: {fileID: 0}
+  soil_01: {fileID: 0}
   targetObject: {fileID: 1615361745}
   haveRice: 1
   range: 0
@@ -112872,13 +112874,15 @@ MonoBehaviour:
   chickenHappiness: 0
   isCow: 0
   isChick: 0
+  isFarm: 0
   isPlant: 0
   isDig: 0
   casting: 0
-  Planting: 0
+  Digging: 0
   Doing: 0
   Done: 0
-  soil_00: {fileID: 6090730815251558859, guid: e59927284c6abd74dae3b3eb87d31e12, type: 3}
+  soil_00: {fileID: 0}
+  soil_01: {fileID: 0}
   targetObject: {fileID: 1240666877}
   haveRice: 1
   range: 0
@@ -114176,13 +114180,15 @@ MonoBehaviour:
   chickenHappiness: 0
   isCow: 0
   isChick: 0
+  isFarm: 0
   isPlant: 0
   isDig: 0
   casting: 0
-  Planting: 0
+  Digging: 0
   Doing: 0
   Done: 0
   soil_00: {fileID: 6090730815251558859, guid: e59927284c6abd74dae3b3eb87d31e12, type: 3}
+  soil_01: {fileID: 6275097453012763655, guid: ba3e347c833b5cd409d0b097ecfc90e8, type: 3}
   targetObject: {fileID: 0}
   haveRice: 1
   range: 0

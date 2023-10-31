@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public bool isCow = false;
     public bool isChick = false;
 
+    public bool isFarm = false;
     public bool isPlant = false;
     public bool isDig = false;
 
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour
     //애니메이션
     private bool fish = false;
     public bool casting = false;
-    public bool Planting = false;
+    public bool Digging = false;
     public bool Doing = false;
 
     public bool Done = false;
@@ -38,6 +39,7 @@ public class Player : MonoBehaviour
     private bool riverArea = false;
     private GameObject spaceBar;
     public GameObject soil_00;
+    public GameObject soil_01;
     private RaycastHit2D hit; // hit 변수를 클래스 레벨로 이동
     public Transform targetObject; // 따라갈 오브젝트
 
@@ -96,18 +98,30 @@ public class Player : MonoBehaviour
         {
             Fish();
 
-            if (Planting == true)  
+            if (isFarm)
             {
-                doNotWalk = true;
-                animator.SetBool("Dig", true);
-                Invoke("Dig", 1f);  //1초 대기 후 Dig함수 실행
-
-                if (isPlant == true)
+                GameObject targetObj = FindDiggedSoil();
+                //기본 흙일때 -> 땅파기
+                if (!isDig && !isPlant)
                 {
+                    StartCoroutine(Dig());
+                }
+                else if (isDig)
+                {
+                    //파진 흙일때 -> 씨앗심기
+                    if (!isPlant) 
+                    {
+                        StartCoroutine(Do(targetObj));
+                    }
+                    //식물이 심어진 흙일때
+                    else if(isPlant)
+                    {
 
+                    }
                 }
             }
         }
+
         if (Input.GetKeyUp(KeyCode.Space))
         {
 
@@ -225,25 +239,75 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Dig()
+    GameObject FindDiggedSoil()
+    {
+        string objectTag = gameObject.tag;
+        Vector2 targetPosition = Grid_pos(this.transform.position);
+        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Digged_soil");
+
+        foreach (GameObject obj in objectsWithTag)  //배열의 반복문
+        {
+            //현재 플레이어 좌표에 맞는 그리드 좌표에 위치한 'soil_00' 오브젝트 찾기
+            if (obj.transform.position.x == targetPosition.x && obj.transform.position.y == targetPosition.y)
+            {
+                isDig = true;
+                isPlant = false;
+                return obj;
+            }
+        }
+        isDig = false;
+        isPlant = false;
+        return null;
+    }
+
+    //땅파기 함수
+    IEnumerator Dig()
     {
         string objectTag = gameObject.tag;
 
+        doNotWalk = true;
+        Digging = true;
+        animator.SetBool("Dig", true);
+
+        yield return new WaitForSeconds(1f);    //1초 대기
+
         if (objectTag == "Player")
         {
-            Instantiate(soil_00, Digged_soil_pos(this.transform.position), Quaternion.identity);
+            Instantiate(soil_00, Grid_pos(this.transform.position), Quaternion.identity);
         }
         animator.SetBool("Dig", false);
         doNotWalk = false;
+        Digging = false;
     }
 
-    Vector2 Digged_soil_pos(Vector2 position)   //그리드에 맞춰 흙 배치
+    IEnumerator Do(GameObject obj)
+    {
+        string objectTag = gameObject.tag;
+
+        doNotWalk = true;
+        Doing = true;
+        animator.SetBool("Doing", true);
+
+        yield return new WaitForSeconds(0.7f);    //0.7초 대기
+
+        if (objectTag == "Player")
+        {
+            Instantiate(soil_01, Grid_pos(this.transform.position), Quaternion.identity);
+            Destroy(obj);   //기존에 있던 soil_00 제거
+        }
+        animator.SetBool("Doing", false);
+        doNotWalk = false;
+        Doing = false;
+    }
+
+    //그리드에 맞추기
+    Vector2 Grid_pos(Vector2 position)
     {
         float x = position.x;
         float y = position.y;
         bool left = spriter.flipX; //바라보는 방향
 
-        Debug.Log(x + ", " + y + left);
+        //Debug.Log(x + ", " + y + left);
         //x좌표
         if (x % 1 >= 0.5f || x % 1 < -0.5f)
         {
@@ -288,16 +352,19 @@ public class Player : MonoBehaviour
             y -= 0.5f + (y % 1);
         }
 
-        Debug.Log(x + ", " + y + left);
+        //Debug.Log(x + ", " + y + left);
         return new Vector2(x, y);
     }
+
+
 
     //Hair&Tool애니메이션
     void LateUpdate()
     {
         animator.SetFloat("Speed", inputVec.magnitude);
 
-        if (inputVec.x != 0 && !casting) // 방향키를 누르고 casting이 아닐 때만 플립합니다.
+        // 방향키를 누르고 casting, Digging, Doing이 아닐 때만 플립합니다.
+        if (inputVec.x != 0 && !casting && !Digging && !Doing)
         {
             spriter.flipX = inputVec.x < 0;
 
@@ -326,7 +393,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("PlantPoint")) //밭
         {
             theState.SpaceBar();//스페이스바 띄우기
-            Planting = true;
+            isFarm = true;
         }
     }
 
@@ -357,6 +424,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
+        //낚시
         if (other.gameObject.CompareTag("RiverPoint"))
         {
             riverArea = false;
@@ -367,12 +435,16 @@ public class Player : MonoBehaviour
             spaceBar.SetActive(false);
         }
 
+        //농사
         if (other.gameObject.CompareTag("PlantPoint"))
         {
             theState.SpaceBarDone();
-            Planting = false;
+            isFarm = false;
+            isDig = false;
+            isPlant = false;
         }
 
+        //목축
         if (other.gameObject.CompareTag("Cow"))
         {
             isCow = false;
@@ -470,6 +542,4 @@ public class Player : MonoBehaviour
             }
         }
     }
-
-
 }
