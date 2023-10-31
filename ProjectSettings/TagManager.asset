@@ -15,6 +15,8 @@ TagManager:
   - Item
   - Player_Hair
   - Planted_soil
+  - Npc
+  - Store
   layers:
   - Default
   - TransparentFX

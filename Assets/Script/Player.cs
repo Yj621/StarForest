@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System;
 
 public class Player : MonoBehaviour
 {
-
+    UiController theUI;
     CowState theCowState;
     DropItem theDropItem;
     State theState;
@@ -41,8 +42,7 @@ public class Player : MonoBehaviour
     public GameObject soil_00;
     public GameObject soil_01;
     private RaycastHit2D hit; // hit 변수를 클래스 레벨로 이동
-    public Transform targetObject; // 따라갈 오브젝트
-
+    public Transform targetObject;
     public bool haveRice = true;
 
     //시간
@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
         theState = FindObjectOfType<State>();
         theDropItem = FindObjectOfType<DropItem>();
         theCowState = FindObjectOfType<CowState>();
+        theUI = FindObjectOfType<UiController>();
     }
     void Start()
     {
@@ -447,6 +448,15 @@ public class Player : MonoBehaviour
         {
             isChick = true;
             Debug.Log(chickenHappiness);
+        }
+        
+        if(other.gameObject.CompareTag("Npc")&& objectTag == "Player_Hair"){
+            theUI.StorePanel.SetActive(true);
+        }
+
+        if(other.gameObject.CompareTag("Store")&& objectTag == "Player_Hair"){
+            SceneManager.LoadScene("StoreScene");
+            Debug.Log("Enter");
         }
 
 
