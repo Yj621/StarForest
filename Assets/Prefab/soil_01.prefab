@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5846379976319147331}
   m_Layer: 0
   m_Name: soil_01
-  m_TagString: Untagged
+  m_TagString: Planted_soil
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 520366109768395801}
   - component: {fileID: 8272673147569613352}
   - component: {fileID: 7892347923724938322}
+  - component: {fileID: 7999036882321361038}
   m_Layer: 0
   m_Name: Crops
   m_TagString: Untagged
@@ -191,3 +192,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7999036882321361038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8635661666803245967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce836a2d933d4b40a208976e3595e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GrowEnd: 0
+  beetroot: 0
+  carrot: 1
+  parsnip: 0
+  pumpkin: 0

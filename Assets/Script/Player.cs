@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
 
             if (isFarm)
             {
-                GameObject targetObj = FindDiggedSoil();
+                GameObject targetObj = FindSoil();
                 //기본 흙일때 -> 땅파기
                 if (!isDig && !isPlant)
                 {
@@ -109,15 +109,20 @@ public class Player : MonoBehaviour
                 else if (isDig)
                 {
                     //파진 흙일때 -> 씨앗심기
-                    if (!isPlant) 
+                    if (!isPlant)
                     {
-                        StartCoroutine(Do(targetObj));
+                        StartCoroutine(Seed(targetObj));
                     }
                     //식물이 심어진 흙일때
-                    else if(isPlant)
+                    else if (isPlant)
                     {
-
+                        //if(/*애니메이션이 모두 작동했다면*/)
+                        //{
+                        //    StartCoroutine(Harvest(targetObj));
+                        //}
+                        //isPlant = false;
                     }
+                    isDig = false;
                 }
             }
         }
@@ -141,10 +146,10 @@ public class Player : MonoBehaviour
                 Debug.Log(chickenHappiness);
                 // Debug.Log("Chicken");
                 chickenHappiness += 1;
-                
+
             }
-            Debug.Log("chickenHappiness: "+chickenHappiness);
-            
+            Debug.Log("chickenHappiness: " + chickenHappiness);
+
         }
         // 머리, Tool따로 노는거 방지
         if (targetObject != null)
@@ -239,19 +244,30 @@ public class Player : MonoBehaviour
         }
     }
 
-    GameObject FindDiggedSoil()
+    GameObject FindSoil()
     {
         string objectTag = gameObject.tag;
-        Vector2 targetPosition = Grid_pos(this.transform.position);
-        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag("Digged_soil");
+        Vector2 targetPosition = Grid_pos();
+        GameObject[] Digged_soil = GameObject.FindGameObjectsWithTag("Digged_soil");
+        GameObject[] Planted_soil = GameObject.FindGameObjectsWithTag("Planted_soil");
 
-        foreach (GameObject obj in objectsWithTag)  //배열의 반복문
+        foreach (GameObject obj in Digged_soil)  //배열의 반복문
         {
             //현재 플레이어 좌표에 맞는 그리드 좌표에 위치한 'soil_00' 오브젝트 찾기
             if (obj.transform.position.x == targetPosition.x && obj.transform.position.y == targetPosition.y)
             {
                 isDig = true;
                 isPlant = false;
+                return obj;
+            }
+        }
+        foreach (GameObject obj in Planted_soil)  //배열의 반복문
+        {
+            //현재 플레이어 좌표에 맞는 그리드 좌표에 위치한 'soil_01' 오브젝트 찾기
+            if (obj.transform.position.x == targetPosition.x && obj.transform.position.y == targetPosition.y)
+            {
+                isDig = true;
+                isPlant = true;
                 return obj;
             }
         }
@@ -273,26 +289,25 @@ public class Player : MonoBehaviour
 
         if (objectTag == "Player")
         {
-            Instantiate(soil_00, Grid_pos(this.transform.position), Quaternion.identity);
+            Instantiate(soil_00, Grid_pos(), Quaternion.identity);
         }
         animator.SetBool("Dig", false);
         doNotWalk = false;
         Digging = false;
     }
 
-    IEnumerator Do(GameObject obj)
+    IEnumerator Seed(GameObject obj)
     {
         string objectTag = gameObject.tag;
 
         doNotWalk = true;
         Doing = true;
         animator.SetBool("Doing", true);
-
         yield return new WaitForSeconds(0.7f);    //0.7초 대기
 
         if (objectTag == "Player")
         {
-            Instantiate(soil_01, Grid_pos(this.transform.position), Quaternion.identity);
+            Instantiate(soil_01, Grid_pos(), Quaternion.identity);
             Destroy(obj);   //기존에 있던 soil_00 제거
         }
         animator.SetBool("Doing", false);
@@ -300,39 +315,59 @@ public class Player : MonoBehaviour
         Doing = false;
     }
 
-    //그리드에 맞추기
-    Vector2 Grid_pos(Vector2 position)
+    IEnumerator Harvest(GameObject obj)
     {
-        float x = position.x;
-        float y = position.y;
+        string objectTag = gameObject.tag;
+
+        doNotWalk = true;
+        Doing = true;
+        animator.SetBool("Doing", true);
+        yield return new WaitForSeconds(0.7f);    //0.7초 대기
+
+        if (objectTag == "Player")
+        {
+            Destroy(obj);   //기존에 있던 soil_01 제거
+            //여기에 아이템 생성
+        }
+        animator.SetBool("Doing", false);
+        doNotWalk = false;
+        Doing = false;
+    }
+
+    //그리드에 맞추기
+    Vector2 Grid_pos()
+    {
+        float x = targetObject.transform.position.x;
+        float y = targetObject.transform.position.y;
         bool left = spriter.flipX; //바라보는 방향
 
-        //Debug.Log(x + ", " + y + left);
+        Debug.Log(x + ", " + y + left);
+
         //x좌표
         if (x % 1 >= 0.5f || x % 1 < -0.5f)
         {
-            if (left)
+            if (left)   //왼쪽 바라봄
             {
                 x += 0.5f - (x % 1);
             }
-            if (!left)
+            if (!left)  //오른쪽 바라봄
             {
                 x += 1.5f - (x % 1);
             }
 
-            if (position.x < 0)
+            if (x < 0)
             {
                 x -= 2f;
             }
         }
 
-        if(-0.5f <= x%1 && x%1 <0.5f)
+        if (-0.5f <= x % 1 && x % 1 < 0.5f)
         {
-            if (left)
+            if (left)   //왼쪽 바라봄
             {
                 x -= 0.5f + (x % 1);
             }
-            else
+            else        //오른쪽 바라봄
             {
                 x += 0.5f - (x % 1);
             }
@@ -352,7 +387,7 @@ public class Player : MonoBehaviour
             y -= 0.5f + (y % 1);
         }
 
-        //Debug.Log(x + ", " + y + left);
+        Debug.Log(x + ", " + y + left);
         return new Vector2(x, y);
     }
 
@@ -468,13 +503,15 @@ public class Player : MonoBehaviour
     }
     private void DecreaseChickHappiness()
     {
-        
+
         // Debug.Log("닭의 행복 지수 : " + chickenHappiness);
         // chickenHappiness 음수가 되지 않도록 예외 처리
         if (chickenHappiness <= 0)
         {
             chickenHappiness = 0;
-        }else{
+        }
+        else
+        {
             chickenHappiness -= 1;
         }
     }
