@@ -26,8 +26,32 @@ public class UiController : MonoBehaviour
         StorePanel.SetActive(false);
         Debug.Log("1");
     }
-    public void OnBtnPanelCancle()
+    public void OnBtnStorePanelCancle()
+    {
+        StorePanel.SetActive(false);
+    }
+    public void OnBtnBuyCancle()
     {
         BuyPanel.SetActive(false);
+    }
+
+    public void OnBtnRice(){
+
+    }
+    public void OnBtnSeed1()
+    {
+
+    }
+    public void OnBtnSeed2()
+    {
+
+    }
+    public void OnBtnFishRod()
+    {
+
+    }
+    public void OnBtnSpade()
+    {
+
     }
 }
