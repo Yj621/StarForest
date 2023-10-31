@@ -205,6 +205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GrowEnd: 0
+  CropNo: 0
   beetroot: 0
   carrot: 1
   parsnip: 0

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -99,6 +100,7 @@ public class Player : MonoBehaviour
         {
             Fish();
 
+            //농사
             if (isFarm)
             {
                 GameObject targetObj = FindSoil();
@@ -117,11 +119,17 @@ public class Player : MonoBehaviour
                     //식물이 심어진 흙일때
                     else if (isPlant)
                     {
-                        //if(/*애니메이션이 모두 작동했다면*/)
-                        //{
-                        //    StartCoroutine(Harvest(targetObj));
-                        //}
-                        //isPlant = false;
+                        //지정한 땅에 식물이 다 자랐는지 확인하는 변수 가져옴
+                        Transform Crops = targetObj.transform.Find("Crops");
+                        bool GrowEnd = Crops.GetComponent<CropsGrow>().GrowEnd;
+                        int CropNo = Crops.GetComponent<CropsGrow>().CropNo;
+
+                        //식물이 다 자랐으면
+                        if (GrowEnd)
+                        {
+                            StartCoroutine(Harvest(targetObj, CropNo));
+                        }
+                        isPlant = false;
                     }
                     isDig = false;
                 }
@@ -316,7 +324,7 @@ public class Player : MonoBehaviour
         Doing = false;
     }
 
-    IEnumerator Harvest(GameObject obj)
+    IEnumerator Harvest(GameObject obj, int num)
     {
         string objectTag = gameObject.tag;
 
@@ -328,7 +336,9 @@ public class Player : MonoBehaviour
         if (objectTag == "Player")
         {
             Destroy(obj);   //기존에 있던 soil_01 제거
-            //여기에 아이템 생성
+            //아이템 생성
+            Instantiate(theDropItem.CropDrop(num), Grid_pos(), Quaternion.identity);
+
         }
         animator.SetBool("Doing", false);
         doNotWalk = false;
@@ -342,7 +352,7 @@ public class Player : MonoBehaviour
         float y = targetObject.transform.position.y;
         bool left = spriter.flipX; //바라보는 방향
 
-        Debug.Log(x + ", " + y + left);
+        //Debug.Log(x + ", " + y + left);
 
         //x좌표
         if (x % 1 >= 0.5f || x % 1 < -0.5f)
@@ -351,12 +361,12 @@ public class Player : MonoBehaviour
             {
                 x += 0.5f - (x % 1);
             }
-            if (!left)  //오른쪽 바라봄
+            else  //오른쪽 바라봄
             {
                 x += 1.5f - (x % 1);
             }
 
-            if (x < 0)
+            if (targetObject.transform.position.x < 0)
             {
                 x -= 2f;
             }
@@ -388,7 +398,7 @@ public class Player : MonoBehaviour
             y -= 0.5f + (y % 1);
         }
 
-        Debug.Log(x + ", " + y + left);
+        //Debug.Log(x + ", " + y + left);
         return new Vector2(x, y);
     }
 

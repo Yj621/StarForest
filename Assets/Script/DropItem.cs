@@ -7,10 +7,15 @@ public class DropItem : MonoBehaviour
     Player thePlayer;
     public GameObject fishPrefab; // 떨어뜨릴 아이템 프리팹    
     public Transform fishDropPoint; // 아이템을 떨어뜨릴 위치
+
     public GameObject cowPrefab; // 떨어뜨릴 아이템 프리팹
     public Transform cowDropPoint;
+
     public GameObject chickenPrefab; // 떨어뜨릴 아이템 프리팹
     public Transform chickenDropPoint;
+
+    public GameObject[] Crops; //떨어뜨릴 작물 아이템
+
     public bool isDrop = false;
 
     public float dropChance = 0.5f; // 아이템을 떨어뜨릴 확률 (0.0에서 1.0 사이)
@@ -78,5 +83,17 @@ public class DropItem : MonoBehaviour
             }
         }
 
+    }
+
+    public GameObject CropDrop(int num)
+    {
+        for (int i = 0; i < Crops.Length; i++)
+        {
+            if(num == i)
+            {
+                return Crops[i];
+            }
+        }
+        return null;
     }
 }
