@@ -29,7 +29,7 @@ public class Inventory : MonoBehaviour
         {
             for (int i = 0; i < slots.Length; i++)
             {
-                if (slots[i].item != null)  // null 이라면 slots[i].item.itemName 할 때 런타임 에러 나서
+                if (slots[i].item != null)  
                 {
                     if (slots[i].item.itemName == _item.itemName)
                     {
