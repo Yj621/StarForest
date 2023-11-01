@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7590598852922982654}
   - component: {fileID: 4722601787840117285}
   - component: {fileID: 3105654802969711803}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: glint_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,9 +117,9 @@ GameObject:
   - component: {fileID: 2165675587615654514}
   - component: {fileID: 2165675587615654517}
   - component: {fileID: 1270353011624433070}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: egg
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

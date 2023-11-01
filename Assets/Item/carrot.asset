@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8fc6f9494c542440b737c99de16d709, type: 3}
-  m_Name: fish
+  m_Name: carrot
   m_EditorClassIdentifier: 
-  itemName: Fish
-  itemType: 2
-  itemImage: {fileID: 21300000, guid: f41997e44fb214c438b7c076d35fa149, type: 3}
-  itemPrefab: {fileID: 1447794822709338556, guid: c3acdd4a6050d4a4e8aeec41de0e4a6e, type: 3}
+  itemName: carrot
+  itemType: 0
+  itemImage: {fileID: 21300000, guid: 29444787003e45b46bf442f8da80e483, type: 3}
+  itemPrefab: {fileID: 8773496837096175440, guid: 89216b28d92cb0d468ec48bc42500f3a, type: 3}

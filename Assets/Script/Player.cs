@@ -447,14 +447,14 @@ public class Player : MonoBehaviour
     {
         string objectTag = gameObject.tag;
         //목축
-        if (other.gameObject.CompareTag("Cow") && objectTag == "Player_Hair")
+        if (other.gameObject.CompareTag("Cow") && objectTag == "Player_Tool")
         {
             isCow = true;
             // Debug.Log("cow");
             // cowHappiness += 1;
             // Debug.Log(cowHappiness);
         }
-        if (other.gameObject.CompareTag("Chicken") && objectTag == "Player_Hair")
+        if (other.gameObject.CompareTag("Chicken") && objectTag == "Player_Tool")
         {
             isChick = true;
             Debug.Log(chickenHappiness);

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4115166681475692431}
   - component: {fileID: 4115166681475692430}
   - component: {fileID: 4115166681475692429}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: beetroot_05
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 4115166681728671822}
   - component: {fileID: 4115166681728671792}
   - component: {fileID: 4115166681728671823}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: glint_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

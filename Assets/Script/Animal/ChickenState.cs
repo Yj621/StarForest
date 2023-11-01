@@ -22,7 +22,7 @@ public class ChickenState : MonoBehaviour
     {
         if (thePlayer != null)
         {
-            //Debug.Log("the player state : "+thePlayer.gameObject);
+            // Debug.Log("the player state : "+thePlayer.gameObject);
         }
         //Debug.Log("thePlayer.chickenHappiness : " + thePlayer.chickenHappiness);
         // cowHappiness가 변경되었을 때만 애니메이션 상태 업데이트

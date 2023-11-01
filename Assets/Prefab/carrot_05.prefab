@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8773496837096175443}
   - component: {fileID: 8773496837096175442}
   - component: {fileID: 8773496837096175441}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: carrot_05
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 8773496837395556116}
   - component: {fileID: 8773496837395556118}
   - component: {fileID: 8773496837395556117}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: glint_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

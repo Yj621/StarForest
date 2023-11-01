@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UiController : MonoBehaviour
 {
     public GameObject BuyPanel;
-    public GameObject SellPanel;
+    // public GameObject SellPanel;
     public GameObject StorePanel; 
     public GameObject InventoryPanel;
     // Start is called before the first frame update
@@ -14,7 +14,7 @@ public class UiController : MonoBehaviour
     {
         StorePanel.SetActive(false);
         BuyPanel.SetActive(false);
-        SellPanel.SetActive(false);
+        // SellPanel.SetActive(false);
         InventoryPanel.SetActive(false);
     }
 
@@ -42,15 +42,15 @@ public class UiController : MonoBehaviour
         InventoryPanel.SetActive(true);
         StorePanel.SetActive(false);
     }
-    public void OnBtnInvenSell()
-    {
-        SellPanel.SetActive(true);
-        InventoryPanel.SetActive(false);
-    }
-    public void OnBtnSellCancle()
-    {
-        SellPanel.SetActive(false);
-    }
+    // public void OnBtnInvenSell()
+    // {
+    //     SellPanel.SetActive(true);
+    //     InventoryPanel.SetActive(false);
+    // }
+    // public void OnBtnSellCancle()
+    // {
+    //     SellPanel.SetActive(false);
+    // }
 
 
     public void OnBtnRice(){

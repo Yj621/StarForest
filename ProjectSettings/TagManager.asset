@@ -18,6 +18,7 @@ TagManager:
   - Npc
   - Store
   - Play
+  - Player_Tool
   layers:
   - Default
   - TransparentFX
