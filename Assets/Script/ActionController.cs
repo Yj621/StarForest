@@ -26,7 +26,7 @@ public class ActionController : MonoBehaviour
 
     private void TryAction()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             CheckItem();
             CanPickUp();
