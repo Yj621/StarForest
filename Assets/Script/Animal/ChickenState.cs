@@ -13,7 +13,7 @@ public class ChickenState : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         thePlayer = FindObjectOfType<Player>();
-        Debug.Log("thePlayer.chickenHappiness in start() : " + thePlayer.chickenHappiness);
+        //Debug.Log("thePlayer.chickenHappiness in start() : " + thePlayer.chickenHappiness);
         theDropItem = FindObjectOfType<DropItem>();
 
     }
@@ -22,9 +22,9 @@ public class ChickenState : MonoBehaviour
     {
         if (thePlayer != null)
         {
-            Debug.Log("the player state : "+thePlayer.gameObject);
+            //Debug.Log("the player state : "+thePlayer.gameObject);
         }
-        Debug.Log("thePlayer.chickenHappiness : " + thePlayer.chickenHappiness);
+        //Debug.Log("thePlayer.chickenHappiness : " + thePlayer.chickenHappiness);
         // cowHappiness가 변경되었을 때만 애니메이션 상태 업데이트
         if (thePlayer.chickenHappiness != previousChickenHappiness)
         {

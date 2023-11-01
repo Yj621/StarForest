@@ -10,7 +10,7 @@ public class ActionController : MonoBehaviour
 
     private bool pickupActivated = false;  // 아이템 습득 가능할시 True 
 
-    private RaycastHit hitInfo;  // 충돌체 정보 저장
+    private RaycastHit2D hitInfo;  // 2D 충돌체 정보 저장
 
     [SerializeField]
     private LayerMask layerMask;  // 특정 레이어를 가진 오브젝트에 대해서만 습득할 수 있어야 한다.
@@ -35,12 +35,14 @@ public class ActionController : MonoBehaviour
 
     private void CheckItem()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, range, layerMask))
+        hitInfo = Physics2D.Raycast(transform.position, Vector2.right, range, layerMask);
+
+        if (hitInfo.collider != null)
         {
-            if (hitInfo.transform.tag == "Item")
+            if (hitInfo.transform.CompareTag("Item"))
             {
-                print("can pickup1");
                 ItemInfoAppear();
+                //Debug.Log("CheckItem");
             }
         }
         else
@@ -50,7 +52,8 @@ public class ActionController : MonoBehaviour
     private void ItemInfoAppear()
     {
         pickupActivated = true;
-        actionText.gameObject.SetActive(true);
+        //actionText.gameObject.SetActive(true);
+        //Debug.Log("ItemInfoAppear");
     }
 
     private void ItemInfoDisappear()
@@ -65,16 +68,14 @@ public class ActionController : MonoBehaviour
     private void CanPickUp()
     {
         if (pickupActivated)
-            print("can pickup2");
         {
             if (hitInfo.transform != null)
             {
                 theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
                 Destroy(hitInfo.transform.gameObject);
                 ItemInfoDisappear();
+                Debug.Log("Item picked up");
             }
         }
-        theInventory.AcquireItem(hitInfo.transform.GetComponent<ItemPickUp>().item);
     }
-
 }
