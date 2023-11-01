@@ -468,7 +468,10 @@ public class Player : MonoBehaviour
             SceneManager.LoadScene("StoreScene");
             Debug.Log("Enter");
         }
-
+        if(other.gameObject.CompareTag("Play")&& objectTag == "Player_Hair"){
+            SceneManager.LoadScene("PlayScene");
+            Debug.Log("Play");
+        }
 
         //if (objectTag == "Player" && other.gameObject.CompareTag("Chicken"))
         //{

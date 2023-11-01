@@ -17,6 +17,7 @@ TagManager:
   - Planted_soil
   - Npc
   - Store
+  - Play
   layers:
   - Default
   - TransparentFX
