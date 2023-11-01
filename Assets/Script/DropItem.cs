@@ -21,6 +21,9 @@ public class DropItem : MonoBehaviour
     public float dropChance = 0.5f; // 아이템을 떨어뜨릴 확률 (0.0에서 1.0 사이)
     // private bool hasDropped = false; // 이미 아이템을 떨어뜨렸는지 확인하는 변수
 
+    public GameObject success; // 활성화 및 비활성화할 오브젝트
+    public GameObject fail; // 활성화 및 비활성화할 오브젝트
+
     void Start()
     {
         thePlayer = FindObjectOfType<Player>();
@@ -28,7 +31,19 @@ public class DropItem : MonoBehaviour
 
     void Update()
     {
+        if (isDrop)
+        {
+            StartCoroutine(ActivateForDuration(success, 3f)); // 3초 동안 a 오브젝트 활성화
+            isDrop = false; // 3초 동안 한 번만 실행되도록 isDrop을 false로 변경
+        }
+    }
+    IEnumerator ActivateForDuration(GameObject obj, float duration)
+    {
+        obj.SetActive(true); // 오브젝트 활성화
 
+        yield return new WaitForSeconds(duration); // 지정된 시간만큼 대기
+
+        obj.SetActive(false); // 지정된 기간 후 오브젝트 비활성화
     }
 
     public void FishDrop()
@@ -47,9 +62,15 @@ public class DropItem : MonoBehaviour
                 {
                     isDrop = true;
                 }
+                else
+                {
+                    Debug.Log("fail");
+                    StartCoroutine(ActivateForDuration(fail, 3f)); // 3초 동안 실패 오브젝트 활성화
+                }
             }
         }
     }
+    
 
     public void CowDrop()
     {

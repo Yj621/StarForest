@@ -2138,6 +2138,7 @@ GameObject:
   - component: {fileID: 230483107}
   - component: {fileID: 230483106}
   - component: {fileID: 230483105}
+  - component: {fileID: 230483108}
   m_Layer: 5
   m_Name: Btn_Rice
   m_TagString: Untagged
@@ -2209,7 +2210,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 230483106}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 230483108}
+        m_TargetAssemblyTypeName: Buy, Assembly-CSharp
+        m_MethodName: Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &230483106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4233,6 +4246,7 @@ GameObject:
   - component: {fileID: 570828856}
   - component: {fileID: 570828855}
   - component: {fileID: 570828854}
+  - component: {fileID: 570828857}
   m_Layer: 5
   m_Name: Btn_Seed2
   m_TagString: Untagged
@@ -4304,7 +4318,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 570828855}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 570828857}
+        m_TargetAssemblyTypeName: Buy, Assembly-CSharp
+        m_MethodName: Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &570828855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7244,6 +7270,7 @@ GameObject:
   - component: {fileID: 969852142}
   - component: {fileID: 969852141}
   - component: {fileID: 969852140}
+  - component: {fileID: 969852143}
   m_Layer: 5
   m_Name: Btn_Seed1
   m_TagString: Untagged
@@ -7315,7 +7342,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 969852141}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 969852143}
+        m_TargetAssemblyTypeName: Buy, Assembly-CSharp
+        m_MethodName: Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &969852141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8282,15 +8321,16 @@ RectTransform:
   m_GameObject: {fileID: 1086520662}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3513, y: 0.3513, z: 0.3513}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1910883427}
-  m_RootOrder: 0
+  m_Children:
+  - {fileID: 1910883427}
+  m_Father: {fileID: 1565902689}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 71.30051, y: 60.50035}
+  m_AnchoredPosition: {x: 35.72046, y: 2.3537598}
   m_SizeDelta: {x: 100.0001, y: 115.2}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1086520664
@@ -8418,6 +8458,7 @@ GameObject:
   - component: {fileID: 1107278105}
   - component: {fileID: 1107278104}
   - component: {fileID: 1107278103}
+  - component: {fileID: 1107278106}
   m_Layer: 5
   m_Name: Btn_FishRod
   m_TagString: Untagged
@@ -8489,7 +8530,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1107278104}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1107278106}
+        m_TargetAssemblyTypeName: Buy, Assembly-CSharp
+        m_MethodName: Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1107278104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17567,6 +17620,7 @@ GameObject:
   - component: {fileID: 1397500262}
   - component: {fileID: 1397500261}
   - component: {fileID: 1397500260}
+  - component: {fileID: 1397500263}
   m_Layer: 5
   m_Name: Btn_Spade
   m_TagString: Untagged
@@ -17638,7 +17692,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1397500261}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1397500263}
+        m_TargetAssemblyTypeName: Buy, Assembly-CSharp
+        m_MethodName: Clicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1397500261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17677,6 +17743,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397500258}
   m_CullTransparentMesh: 1
+--- !u!114 &1397500263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397500258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bcfe86569c36d545a11ecdd1fe122fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 21300000, guid: c23e8f39d50c8452296da3e26bd825f6, type: 3}
+  Price: 1000
 --- !u!1 &1411366281
 GameObject:
   m_ObjectHideFlags: 0
@@ -18807,7 +18887,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1769609055}
-  - {fileID: 1910883427}
+  - {fileID: 1086520663}
   - {fileID: 225697914}
   - {fileID: 1115493520}
   - {fileID: 1708830329}
@@ -21705,16 +21785,15 @@ RectTransform:
   m_GameObject: {fileID: 1910883426}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3513, y: 0.3513, z: 0.3513}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1086520663}
-  m_Father: {fileID: 1565902689}
-  m_RootOrder: 1
+  m_Children: []
+  m_Father: {fileID: 1086520663}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10.672607, y: -18.9}
+  m_AnchoredPosition: {x: -71.30047, y: -60.50036}
   m_SizeDelta: {x: 47.68, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1910883428
