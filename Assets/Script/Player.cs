@@ -48,7 +48,7 @@ public class Player : MonoBehaviour
 
     //시간
     private float timer = 0f;
-    private float decreaseInterval = 5f; // 20초마다 감소
+    private float decreaseInterval = 20f; // 20초마다 감소
 
     /*
      * 아이템 인벤토리
