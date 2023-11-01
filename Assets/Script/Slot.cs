@@ -14,6 +14,7 @@ public class Slot : MonoBehaviour
     [SerializeField]
     private GameObject go_CountImage;
 
+
     // 아이템 이미지의 투명도 조절
     private void SetColor(float _alpha)
     {
@@ -25,6 +26,11 @@ public class Slot : MonoBehaviour
     // 인벤토리에 새로운 아이템 슬롯 추가
     public void AddItem(Item _item, int _count = 1)
     {
+        if (_item == null)
+        {
+            return;
+        }
+
         item = _item;
         itemCount = _count;
         itemImage.sprite = item.itemImage;
@@ -47,7 +53,11 @@ public class Slot : MonoBehaviour
     public void SetSlotCount(int _count)
     {
         itemCount += _count;
-        text_Count.text = itemCount.ToString();
+
+        if (text_Count != null) 
+        {
+            text_Count.text = itemCount.ToString();
+        }
 
         if (itemCount <= 0)
             ClearSlot();

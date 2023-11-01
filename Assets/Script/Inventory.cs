@@ -8,10 +8,16 @@ public class Inventory : MonoBehaviour
     private bool isCanvasActive = false;
     private Slot[] slots;  // 슬롯들 배열
 
+    [SerializeField]
+    private GameObject go_SlotsParent;  // Slot들의 부모인 Grid Setting 
 
     private void Start()
     {
-        canvas.SetActive(false);
+        slots = go_SlotsParent.GetComponentsInChildren<Slot>();
+        if (canvas != null) // Null 체크
+        {
+            canvas.SetActive(false);
+        }
     }
 
     private void Update()
@@ -25,11 +31,16 @@ public class Inventory : MonoBehaviour
     }
     public void AcquireItem(Item _item, int _count = 1)
     {
-        if (Item.ItemType.Equipment != _item.itemType)
+        if (_item == null)
+        {
+            return;
+        }
+
+        if (_item.itemType != Item.ItemType.Equipment)
         {
             for (int i = 0; i < slots.Length; i++)
             {
-                if (slots[i].item != null)  
+                if (slots[i].item != null)
                 {
                     if (slots[i].item.itemName == _item.itemName)
                     {
@@ -38,16 +49,15 @@ public class Inventory : MonoBehaviour
                     }
                 }
             }
-        }
 
-        for (int i = 0; i < slots.Length; i++)
-        {
-            if (slots[i].item == null)
+            for (int i = 0; i < slots.Length; i++)
             {
-                slots[i].AddItem(_item, _count);
-                return;
+                if (slots[i].item == null)
+                {
+                    slots[i].AddItem(_item, _count);
+                    return;
+                }
             }
         }
     }
-
 }
