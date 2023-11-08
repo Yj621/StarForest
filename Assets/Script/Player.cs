@@ -189,7 +189,7 @@ public class Player : MonoBehaviour
 
         // 레이 길이
         float rayLength = 3.0f;
-        // 레이를 매 프레임 그립니다.
+        // 레이를 매 프레임 그린다
         Debug.DrawRay(rayStart, rayDirection * rayLength, Color.red);
 
         // 레이를 발사하여 River 태그에 닿으면 casting을 true로 설정
@@ -223,10 +223,6 @@ public class Player : MonoBehaviour
             Done = true;
             theState.Progressbar();
             theDropItem.FishDrop();
-            // if(theDropItem.isDrop == true)
-            // {
-
-            // }
         }
     }
 
@@ -409,7 +405,7 @@ public class Player : MonoBehaviour
     {
         animator.SetFloat("Speed", inputVec.magnitude);
 
-        // 방향키를 누르고 casting, Digging, Doing이 아닐 때만 플립합니다.
+        // 방향키를 누르고 casting, Digging, Doing이 아닐 때만 플립
         if (inputVec.x != 0 && !casting && !Digging && !Doing)
         {
             spriter.flipX = inputVec.x < 0;
@@ -450,9 +446,6 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Cow") && objectTag == "Player_Tool")
         {
             isCow = true;
-            // Debug.Log("cow");
-            // cowHappiness += 1;
-            // Debug.Log(cowHappiness);
         }
         if (other.gameObject.CompareTag("Chicken") && objectTag == "Player_Tool")
         {

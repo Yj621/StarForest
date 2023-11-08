@@ -19,6 +19,7 @@ TagManager:
   - Store
   - Play
   - Player_Tool
+  - Ending
   layers:
   - Default
   - TransparentFX
