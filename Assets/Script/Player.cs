@@ -25,12 +25,13 @@ public class Player : MonoBehaviour
     public bool isCow = false;
     public bool isChick = false;
 
+    //농사에서 땅(오브젝트) 확인
     public bool isFarm = false;
     public bool isPlant = false;
     public bool isDig = false;
 
 
-    //애니메이션
+    //애니메이션(동작 확인)
     private bool fish = false;
     public bool casting = false;
     public bool Digging = false;
@@ -103,35 +104,39 @@ public class Player : MonoBehaviour
             //농사
             if (isFarm)
             {
-                GameObject targetObj = FindSoil();
-                //기본 흙일때 -> 땅파기
-                if (!isDig && !isPlant)
+                if(!Digging && !Doing)  //동작이 끝났는지 확인
                 {
-                    StartCoroutine(Dig());
-                }
-                else if (isDig)
-                {
-                    //파진 흙일때 -> 씨앗심기
-                    if (!isPlant)
-                    {
-                        StartCoroutine(Seed(targetObj));
-                    }
-                    //식물이 심어진 흙일때
-                    else if (isPlant)
-                    {
-                        //지정한 땅에 식물이 다 자랐는지 확인하는 변수 가져옴
-                        Transform Crops = targetObj.transform.Find("Crops");
-                        bool GrowEnd = Crops.GetComponent<CropsGrow>().GrowEnd;
-                        int CropNo = Crops.GetComponent<CropsGrow>().CropNo;
+                    GameObject targetObj = FindSoil();  //작업할 위치의 땅 확인
 
-                        //식물이 다 자랐으면
-                        if (GrowEnd)
-                        {
-                            StartCoroutine(Harvest(targetObj, CropNo));
-                        }
-                        isPlant = false;
+                    //기본 흙일때 -> 땅파기
+                    if (!isDig && !isPlant)
+                    {
+                        StartCoroutine(Dig());
                     }
-                    isDig = false;
+                    else if (isDig)
+                    {
+                        //파진 흙일때 -> 씨앗심기
+                        if (!isPlant)
+                        {
+                            StartCoroutine(Seed(targetObj));
+                        }
+                        //식물이 심어진 흙일때
+                        else if (isPlant)
+                        {
+                            //지정한 땅에 식물이 다 자랐는지 확인하는 변수 가져옴
+                            Transform Crops = targetObj.transform.Find("Crops");
+                            bool GrowEnd = Crops.GetComponent<CropsGrow>().GrowEnd;
+                            int CropNo = Crops.GetComponent<CropsGrow>().CropNo;
+
+                            //식물이 다 자랐으면
+                            if (GrowEnd)
+                            {
+                                StartCoroutine(Harvest(targetObj, CropNo));
+                            }
+                            isPlant = false;
+                        }
+                        isDig = false;
+                    }
                 }
             }
         }
