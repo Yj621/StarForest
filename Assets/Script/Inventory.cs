@@ -6,7 +6,7 @@ public class Inventory : MonoBehaviour
 {
     public GameObject canvas;
     private bool isCanvasActive = false;
-    private Slot[] slots;  // 슬롯들 배열
+    private static Slot[] slots;  // 슬롯들 배열
 
     [SerializeField]
     private GameObject go_SlotsParent;  // Slot들의 부모인 Grid Setting 

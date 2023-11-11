@@ -9,6 +9,7 @@ public class UiController : MonoBehaviour
     // public GameObject SellPanel;
     public GameObject StorePanel; 
     public GameObject InventoryPanel;
+    public GameObject EndingCheckPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,8 @@ public class UiController : MonoBehaviour
         BuyPanel.SetActive(false);
         // SellPanel.SetActive(false);
         InventoryPanel.SetActive(false);
+        EndingCheckPanel.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -51,25 +54,4 @@ public class UiController : MonoBehaviour
     // {
     //     SellPanel.SetActive(false);
     // }
-
-
-    public void OnBtnRice(){
-
-    }
-    public void OnBtnSeed1()
-    {
-
-    }
-    public void OnBtnSeed2()
-    {
-
-    }
-    public void OnBtnFishRod()
-    {
-
-    }
-    public void OnBtnSpade()
-    {
-
-    }
 }
