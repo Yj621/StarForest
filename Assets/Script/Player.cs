@@ -463,14 +463,14 @@ public class Player : MonoBehaviour
             theUI.StorePanel.SetActive(true);
         }
 
-        if (other.gameObject.CompareTag("Store") && objectTag == "Player_Hair")
+        if (other.gameObject.CompareTag("Store") )
         {
-            SceneManager.LoadScene("StoreScene");
+            transform.position = new Vector3(-67.1f, 11.36f, transform.position.z);
             Debug.Log("Enter");
         }
-        if (other.gameObject.CompareTag("Play") && objectTag == "Player_Hair")
+        if (other.gameObject.CompareTag("Play"))
         {
-            SceneManager.LoadScene("PlayScene");
+            transform.position = new Vector3(0.5f, 4.3f, transform.position.z);
             Debug.Log("Play");
         }
 
