@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4115166681475692431}
   - component: {fileID: 4115166681475692430}
   - component: {fileID: 4115166681475692429}
+  - component: {fileID: 4239074082611825073}
   m_Layer: 10
   m_Name: beetroot_05
   m_TagString: Item
@@ -102,6 +103,19 @@ CircleCollider2D:
   m_Offset: {x: 0.06392932, y: -0.054407895}
   serializedVersion: 2
   m_Radius: 0.5095214
+--- !u!114 &4239074082611825073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4115166681475692428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6b224a948028244ac8e0e8e51950ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 3e6f4d267fd60f342a1c806e802b9240, type: 2}
 --- !u!1 &4115166681728671821
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8fc6f9494c542440b737c99de16d709, type: 3}
-  m_Name: carrot
+  m_Name: beetroot
   m_EditorClassIdentifier: 
-  itemName: carrot
+  itemName: beetroot
   itemType: 2
-  itemImage: {fileID: 21300000, guid: 29444787003e45b46bf442f8da80e483, type: 3}
-  itemPrefab: {fileID: 8773496837096175440, guid: 89216b28d92cb0d468ec48bc42500f3a, type: 3}
+  itemImage: {fileID: 21300000, guid: b844af8992bf4944194ba14c55d08906, type: 3}
+  itemPrefab: {fileID: 4115166681475692428, guid: 0050d05c0e3d61f44a3032705eebd667, type: 3}

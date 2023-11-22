@@ -204,9 +204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce836a2d933d4b40a208976e3595e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 4774286753399987674, guid: 9ac3c3e0668e244d082f0b698cb01ec7, type: 3}
   GrowEnd: 0
   CropNo: 0
-  beetroot: 0
-  carrot: 1
-  parsnip: 0
-  pumpkin: 0

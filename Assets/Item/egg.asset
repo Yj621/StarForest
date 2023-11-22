@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: egg
   m_EditorClassIdentifier: 
   itemName: Egg
-  itemType: 0
+  itemType: 2
   itemImage: {fileID: 21300000, guid: 239e77f36bda944abaa3b808b464ce10, type: 3}
   itemPrefab: {fileID: 2165675587615654516, guid: f8d530f93a00e423b830c5300fc381d6, type: 3}

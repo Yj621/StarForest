@@ -5,19 +5,16 @@ using UnityEngine;
 public class CropsGrow : MonoBehaviour
 {
     Animator animator;
+    GameObject player;
     public bool GrowEnd = false;
     public int CropNo = -1;  //작물 drop할 때, 배열 번호
-
-    //애니메이션
-    public bool beetroot = false;
-    public bool carrot = false; //일단 이거로
-    public bool parsnip = false;
-    public bool pumpkin = false;
 
 
     void Awake()
     {
         animator = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        CropNo = player.GetComponent<Player>().SetCropNo;
     }
     // Start is called before the first frame update
     void Start()
@@ -35,25 +32,21 @@ public class CropsGrow : MonoBehaviour
     IEnumerator StartGrow()
     {
         yield return new WaitForSeconds(5f);    //5초 대기
-        if (beetroot)
+        if (CropNo == 0)    //beetroot
         {
             animator.SetBool("beetroot", true);
-            CropNo = 0;
         }
-        else if (carrot)
+        else if (CropNo == 1)    //carrot
         {
             animator.SetBool("carrot", true);
-            CropNo = 1;
         }
-        else if (parsnip)
+        else if (CropNo == 2)    //parsnip
         {
             animator.SetBool("parsnip", true);
-            CropNo = 2;
         }
-        else if (pumpkin)
+        else if (CropNo == 3)    //pumpkin
         {
             animator.SetBool("pumpkin", true);
-            CropNo = 3;
         }
 
         else if(CropNo == -1)

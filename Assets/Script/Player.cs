@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     public bool Digging = false;
     public bool Doing = false;
 
+    public int SetCropNo = 0;
     public bool Done = false;
     private bool doNotWalk = false;
     private bool riverArea = false;
@@ -95,6 +96,24 @@ public class Player : MonoBehaviour
 
         inputVec.x = Input.GetAxis("Horizontal");
         inputVec.y = Input.GetAxis("Vertical");
+
+        //숫자키로 입력으로 심을 작물 종류 결정
+        if(Input.GetKeyDown(KeyCode.Alpha0))    //비트
+        {
+            SetCropNo = 0;
+        }
+       else if(Input.GetKeyDown(KeyCode.Alpha1))    //당근
+        {
+            SetCropNo = 1;
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha2))   //파스닙
+        {
+            SetCropNo = 2;
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha3))   //호박
+        {
+            SetCropNo = 3;
+        }
 
         // 스페이스바 입력 처리
         if (Input.GetKeyDown(KeyCode.Space))
@@ -197,7 +216,7 @@ public class Player : MonoBehaviour
         // 레이를 매 프레임 그린다
         Debug.DrawRay(rayStart, rayDirection * rayLength, Color.red);
 
-        // 레이를 발사하여 River 태그에 닿으면 casting을 true로 설정
+        // 레이를 발사하여 River 태그에 닿으면 riverArea을 true로 설정
         RaycastHit2D hit = Physics2D.Raycast(rayStart, rayDirection, rayLength, LayerMask.GetMask("River"));
 
         if (hit.collider != null)
@@ -212,6 +231,7 @@ public class Player : MonoBehaviour
     //낚시 함수
     void Fish()
     {
+        string objectTag = gameObject.tag;
         if (fish == false && casting == true && riverArea == true) //fish 애니메이션이 실행 중이지 않을 때
         {
             // casting = true; // casting 애니메이션 시작
@@ -225,9 +245,13 @@ public class Player : MonoBehaviour
             casting = false;
             animator.SetBool("Casting", false); // casting 애니메이션을 끝냄
             animator.SetBool("Fish", true);
+
+            if (objectTag == "Player")
+            {
+                theState.Progressbar();
+                theDropItem.FishDrop();
+            }
             Done = true;
-            theState.Progressbar();
-            theDropItem.FishDrop();
         }
     }
 
@@ -235,7 +259,6 @@ public class Player : MonoBehaviour
     void FishDone()
     {
         animator.SetBool("Fish", false);
-        animator.SetBool("Casting", false); // casting 애니메이션 종료
         Done = false;
         casting = false;
         fish = false;

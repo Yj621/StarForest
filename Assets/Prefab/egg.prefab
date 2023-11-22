@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 2165675587615654514}
   - component: {fileID: 2165675587615654517}
   - component: {fileID: 1270353011624433070}
+  - component: {fileID: 2753699437739492691}
   m_Layer: 10
   m_Name: egg
   m_TagString: Item
@@ -208,3 +209,16 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.625, y: 0.6875}
   m_Direction: 0
+--- !u!114 &2753699437739492691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2165675587615654516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6b224a948028244ac8e0e8e51950ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: fa2da9a016a0641f1b90e4630997b624, type: 2}

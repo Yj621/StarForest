@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1390926486246684628}
   - component: {fileID: 1390926486246684626}
   - component: {fileID: 1390926486246684629}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: glint_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,9 +117,10 @@ GameObject:
   - component: {fileID: 1390926487056638540}
   - component: {fileID: 1390926487056638543}
   - component: {fileID: 1390926487056638542}
-  m_Layer: 0
+  - component: {fileID: 2270394837554558495}
+  m_Layer: 10
   m_Name: parsnip_05
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -208,3 +209,16 @@ CircleCollider2D:
   m_Offset: {x: 0.03808552, y: 0}
   serializedVersion: 2
   m_Radius: 0.47558552
+--- !u!114 &2270394837554558495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1390926487056638529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6b224a948028244ac8e0e8e51950ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 36b4af7137ecb4643b2e72747a2e149f, type: 2}

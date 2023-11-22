@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 437156532731448797}
   - component: {fileID: 437156532731448796}
   - component: {fileID: 437156532731448799}
-  m_Layer: 0
+  - component: {fileID: 8076522305287196373}
+  m_Layer: 10
   m_Name: pumpkin_05
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +103,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4375
+--- !u!114 &8076522305287196373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437156532731448798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee6b224a948028244ac8e0e8e51950ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: bff3484699de8b44c9820702617f467d, type: 2}
 --- !u!1 &437156532983550686
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +127,7 @@ GameObject:
   - component: {fileID: 437156532983550687}
   - component: {fileID: 437156532983550685}
   - component: {fileID: 437156532983550684}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: glint_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

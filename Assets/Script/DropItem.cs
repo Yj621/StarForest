@@ -50,6 +50,7 @@ public class DropItem : MonoBehaviour
     {
         // 1에서 3까지 랜덤한 아이템 수를 설정
         int itemCount = Random.Range(1, 4);
+        int DropCount = 0;
 
         // 아이템을 떨어뜨릴 확률 계산 및 떨어뜨리기
         for (int i = 0; i < itemCount; i++)
@@ -58,16 +59,17 @@ public class DropItem : MonoBehaviour
             {
                 Instantiate(fishPrefab, fishDropPoint.position, Quaternion.identity);
                 Debug.Log("Drop");
-                if(itemCount > 0)
-                {
-                    isDrop = true;
-                }
-                else
-                {
-                    Debug.Log("fail");
-                    StartCoroutine(ActivateForDuration(fail, 3f)); // 3초 동안 실패 오브젝트 활성화
-                }
+                DropCount++;
             }
+        }
+        if (DropCount == 0)
+        {
+            Debug.Log("fail");
+            StartCoroutine(ActivateForDuration(fail, 3f)); // 3초 동안 실패 오브젝트 활성화
+        }
+       else
+        {
+            isDrop = true;
         }
     }
     
