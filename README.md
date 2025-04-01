@@ -21,15 +21,18 @@
 
 23.08.08 ~ 23.11.22
 
-## 💡 **언어 및 게임 엔진**
+## 💡 장르
+2D 인디 어드벤쳐
 
+## ⚙️ **언어 및 게임 엔진**
 
+</div>
 <img src="https://img.shields.io/badge/Unity-100000?style=for-the-badge&logo=unity&logoColor=white">
 <img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white">
 
+</p>
 
-### 🛠️ **협업 툴**
-
+## 🛠️ **협업 툴**
 <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white">
 
 <img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white">
