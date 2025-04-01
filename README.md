@@ -13,7 +13,9 @@
 
 ### StarForest
 
-https://youtu.be/eCFEe33NQMQ?si=IQGRC9c_R8_SpHUM
+플레이 영상
+
+[![썸네일](https://github.com/user-attachments/assets/a70de0ad-9535-46e6-b307-1f61db89e7bf)](https://youtu.be/eCFEe33NQMQ?si=IQGRC9c_R8_SpHUM)
 
 ## ⏰ 개발 기간
 
